@@ -1,15 +1,15 @@
-# simple consent integration example
+# fair[&]smart - simple consent integration example
 
-Some code to demonstrate how to integrate a consent form.
+Some code to demonstrate how to integrate a consent form created using Fair and Smart Right Consent platform.
 
 ## in a nutshell
-* adapt values in config.ini ;
-* build your image : `docker build --tag simple-consent-integration-example .`
-* run your image : `docker run simple-consent-integration-example`
+* put your own values (organization ID, model ID etc ...) in config.ini ;
+* build the image : `docker build --tag simple-consent-integration-example .`
+* run the container : `docker run simple-consent-integration-example`
 
 ## configuration
-Configuration can either be done in config.ini or using environment variables
-(especially useful when running using docker).
+Configuration can either be done in config.ini or using environment variables (especially useful when running using
+docker).
 
 | parameter  | environment variable name  | config file key  | 
 |---|---|---|
@@ -22,8 +22,9 @@ Configuration can either be done in config.ini or using environment variables
 | organisation id | ORGANISATION_ID | organisation_id |
 | model id or alias | MODEL_ID_OR_ALIAS | model_id_or_alias |
 
-Config file is loaded from CONFIG_FILE_PATH (default : "config.ini"). 
+Configuration file is loaded from CONFIG_FILE_PATH (default : "config.ini"). 
  
 ## run example
 Under docker, using a specific config file "my-config.ini" :
+
 `docker run --mount type=bind,source=$PWD/my-config.ini,target=/var/www/html/my-config.ini -e CONFIG_FILE_PATH="my-config.ini" simple-consent-integration-example`
