@@ -79,24 +79,18 @@ function getFormUrl()
 <html lang="fr">
 <head>
     <meta charset="utf-8">
-    <title>Consent iFrame Integration Test</title>
+    <title>Simple Consent Integration Example</title>
 </head>
 <body>
-<h2 style="text-align: center">Consent iFrame Integration Test</h2>
-<iframe src="<?php echo getFormUrl() ?>" width="100%" title="Consent iFrame Integration Test" id="consent"
+<h2 style="text-align: center">Simple Consent Integration Example</h2>
+<iframe src="<?php echo getFormUrl()?>" width="100%" title="Simple Consent Integration Example Iframe" id="consent"
         name="consent"></iframe>
 <script type="text/javascript"
         src="https://cdnjs.cloudflare.com/ajax/libs/iframe-resizer/4.0.4/iframeResizer.js"></script>
-<script type="text/javascript">iFrameResize({log: false});</script>
-<script type="application/javascript">
-    window.addEventListener("message", messageListener, false);
-
-    function messageListener(event) {
-        if (event.data.search(/consent-callback/) >= 0) {
-            const urlback = event.data.replace(/.*consent-callback\/([^"]*).*/, '$1');
-            window.location.assign(urlback);
-        }
-    }
-</script>
+<script type="text/javascript">iFrameResize({
+        log: false,
+        checkOrigin: false,
+        heightCalculationMethod: 'max'
+    }, '#consent');</script>
 </body>
 </html>
